@@ -1,0 +1,111 @@
+<!—-
+    Lesson full page template
+    Location: lesson section of a course
+    Dependencies: Bootstrap 4, FontAwesome 4
+—>
+
+<!-- TILE DESCRIPTION -->
+<!-- Duration of the lesson -->
+<p><i class="fa fa-clock-o mr-2"></i>2 hours</p>
+
+<!-- LABEL CONTENT -->
+<!-- Presentation image - size (at least height) must be consistent accros all lessons - 600x330px recommended -->
+<p><img src="..." alt="" role="presentation" class="img-fluid" width="500" height="333"></p>
+
+<!-- Objectives of the lesson -->
+<div class="alert alert-primary bg-soft-primary rounded-lg mb-3">
+    <p class="alert-heading-h4"><i class="fa fa-info-circle mr-2"></i>Objectives</p>
+    <p class="mb-2">At the end of this lesson, students should be able to:</p>
+    <ul class="mb-0">
+        <li>LO1</li>
+        <li>LO2</li>
+        <li>LO3</li>
+    </ul>
+</div>
+
+<!-- Author - Square images - 300x300px recommended -->
+<div class="alert alert-primary bg-soft-primary rounded-lg clearfix mb-3">
+    <img src="..." alt="Firstname Lastname" class="avatar avatar-xxl float-right ml-3" width="300" height="300">
+    <p class="alert-heading-h4"><i class="fa fa-user mr-2"></i>Author</p>
+    <p class="mb-0"><strong>Firstname Lastname</strong> is professor of ... at ...</p>
+</div>
+
+<!-- Author (simplified) - Square images - 300x300px recommended -->
+<h2>Author</h2>
+<p class="clearfix">
+    <img src="..." alt="Firstname Lastname" class="avatar avatar-xl float-left mr-3 mb-1" width="300" height="300">
+    <strong>Firstname Lastname</strong> is professor of ... at ...
+</p>
+
+<!-- Author's quote -->
+<blockquote class="blockquote text-center my-4">
+    <p class="mb-0">« The added bonus of scientific integrity is that it encourages vigilance. »</p>
+    <footer class="blockquote-footer">Anouk Barberousse</footer>
+</blockquote>
+
+<!-- Main body (starts at h2 - do NOT use h1) -->
+<h2>Introduction</h2>
+<p>Auctor libero velit vivamus non posuere vivamus phasellus quisque diam porta do.</p>
+
+<h2>1. ...</h2>
+<h3>1.1 ...</h3>
+<p>Lorem ipsum dolor sit amet viverra pretium hendrerit sapien aliqua justo lacus mauris tempus turpis.</p>
+
+<h2>Conclusion</h2>
+<p>Auctor libero velit vivamus non posuere vivamus phasellus quisque diam porta do.</p>
+
+<!-- Insert -->
+<div class="alert alert-primary bg-soft-primary rounded-lg mb-3">
+    <p class="alert-heading-h4"><i class="fa fa-info-circle mr-2"></i>Lorem ipsum dolor?</p>
+    <p class="mb-2">Facilisi imperdiet consequat senectus erat maecenas...</p>
+    <hr>
+    <p class="mb-0">Labore habitasse velit ullamcorper pulvinar convallis...</p>
+</div>
+
+<!-- Going further -->
+<h2>Going further</h2>
+<p class="mb-1">Lorem ipsum dolor sit amet et ut tincidunt</p>
+<ul class="mb-3">
+    <li class="mb-1">Point 1</li>
+    <li class="mb-1">Point 2</li>
+    <li class="mb-1">Point 3</li>
+</ul>
+
+<!-- Additionnal readings -->
+<div class="alert alert-primary bg-soft-primary rounded-lg mb-3">
+    <p class="alert-heading-h4"><i class="fa fa-search-plus mr-2"></i>Additional readings</p>
+    <ul>
+        <li>Reading 1</li>
+        <li>Reading 2 <a href="..." target="_blank">...</a></li>
+    </ul>
+</div>
+
+<!-- Popover (alternative to footnotes) -->
+<p>Lorem ipsum 
+    <a class="btn btn-link p-0" role="button" data-container="body" data-toggle="popover" 
+       data-placement="right" data-html="true" tabindex="0" data-trigger="focus" data-original-title="" title="" 
+       data-content="<div class=&quot;no-overflow&quot;><p>line1</p><p>line2</p></div>">
+        <i class="icon fa fa-question-circle text-info fa-fw " title="Help text" aria-label="Help text"></i>
+    </a>
+</p>
+
+<!-- Text with footnote references -->
+<p>Text with footnote <a href="#fn1" id="ref1">[1]</a> </p>
+<p>Text with footnote <a href="#fn2" id="ref2">[2]</a> </p>
+<p>Text with footnote <a href="#fn3" id="ref3">[3]</a> </p>
+<p>Text with footnote <a href="#fn4" id="ref4">[4]</a> </p>
+<p>Text with footnote <a href="#fn5" id="ref5">[5]</a> </p>
+<p>Text with footnote <a href="#fn6" id="ref6">[6]</a> </p>
+
+<!-- Footnotes -->
+<hr>
+<p class="small mb-2" id="fn1">[1] Text of footnote 1 <a href="#ref1" title="Jump back to footnote 1 in the text.">↩</a></p>
+<p class="small mb-2" id="fn2">[2] Text of footnote 2 <a href="#ref2" title="Jump back to footnote 2 in the text.">↩</a></p>
+<p class="small mb-2" id="fn3">[3] Text of footnote 3 <a href="#ref3" title="Jump back to footnote 3 in the text.">↩</a></p>
+<p class="small mb-2" id="fn4">[4] Text of footnote 4 <a href="#ref4" title="Jump back to footnote 4 in the text.">↩</a></p>
+<p class="small mb-2" id="fn5">[5] Text of footnote 5 <a href="#ref5" title="Jump back to footnote 5 in the text.">↩</a></p>
+<p class="small mb-2" id="fn6">[6] Text of footnote 6 <a href="#ref6" title="Jump back to footnote 6 in the text.">↩</a></p>
+
+
+<!-- Manual return button to the home of the course - Adjust the id - not sure it works in all contexts -->
+<p><a href="view.php?id=13" class="btn btn-secondary"><i class="fa fa-chevron-left mr-1"></i>Course home</a></p>

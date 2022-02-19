@@ -1,0 +1,29 @@
+<!-- 
+    Objectives accordion template 
+    Location: Introduction section of a course
+    Dependencies: Bootstrap 4
+-->
+<div class="accordion" id="accordionLessons">
+
+    <!-- Collapsible lesson (update XX for each lesson) -->
+    <div class="card">
+        <div class="card-header p-0" id="lessonXX">
+            <button class="btn btn-link text-decoration-none d-flex align-items-center text-dark collapsed" type="button" data-toggle="collapse" 
+                data-target="#collapseXX" aria-controls="collapseXX" aria-expanded="false">
+                <span class="mr-3 lead font-weight-normal"><i class="fa fa-plus-square-o mr-3"></i>Lesson name</span>
+            </button>
+        </div>
+        <div id="collapseXX" class="collapse" aria-labelledby="lessonXX" data-parent="#accordionLessons">
+            <div class="card-body p-2">
+                <ul class="mb-0">
+                    <li>Objective 1</li>
+                    <li>Objective 2</li>
+                    <li>Objective 3</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Repeat here -->    
+
+</div>
