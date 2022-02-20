@@ -1,4 +1,4 @@
-<h1>BADGE</h1>
+<h1>CERTIFICATE</h1>
 
 [TOC]
 
@@ -32,3 +32,15 @@ The digital signature works through a `.ctr` file. Se: https://docs.moodle.org/3
 ![image3](.img/certificate/image3.jpg)
 
 ![image10](.img/certificate/image10.jpg)
+
+# Bugs
+
+Un certificat a été obtenu par un étudiant qui n'a passé que le Quiz et dont l'essai (toujours en phase de soumission) n'a pas été évalué. La condition d'obtention du certificat était d'avoir un nombre de point supérieur à 51**%** (et non 51 points). 
+
+![image-20220220002341853](.img/certificate/image-20220220002341853.png)
+
+Or voilà le rapport de l'étudiant. Il obtient 93%.
+
+![image-20220220001810269](.img/certificate/image-20220220001810269.png)
+
+Le calcul du % ne tient pas compte de l'essai. On ne peut donc pas utiliser cette méthode pour valider le certificat, il faut en passer par la validation des activités.

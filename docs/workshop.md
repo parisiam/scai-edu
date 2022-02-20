@@ -96,6 +96,8 @@ Dans le paramétrage "Activity completion", on a le choix de valider l'activité
 
 **ATTENTION: dans la version 3.11 de Moodle, si on choisit Assessment, ça bugue : l'activité n'est jamais validée (d'où le choix de Submission).**
 
+On est donc obligé de choisir Submission. Un essai pourra donc être considéré comme terminé même s'il n'a pas été évalué.
+
 # Description de certains paramétres
 
 ## Stratégie d'évaluation (grading strategy)
