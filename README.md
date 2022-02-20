@@ -22,7 +22,7 @@ https://docs.google.com/spreadsheets/d/1RZl1t4MYZvq9OzZsDOilMF0pLLdg5-bpXrxMy14z
 - [Quiz](docs/quiz.md)
 - [Glossary](docs/glossary.md)
 - [Course duration](docs/course_duration.md)
-- [Course completion strategy](docs/completion_strategies.md)
+- [Course completion strategy](docs/obtaining_badge_certif.md)
 - [Tags](docs/tags.md)
 - [Workshop (essay)](docs/workshop.md)
 - [Front page](docs/frontpage.md)
