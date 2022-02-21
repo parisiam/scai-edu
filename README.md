@@ -4,23 +4,19 @@ SCAI Education is a website prepared by [Parisiam](https://parisiam.com) for [SC
 
 This repository is used to share Moodle resources with SCAI team and it contains:
 
-- Documentation
 - User manuals
+- Documentation
 - HTML templates and snippets
 
 The address of the website is https://scai-education.sorbonne-universite.fr and a demo version of the Moodle is available at https://moodle.parisiam.com. Checkout course and lesson summary [here](https://docs.google.com/spreadsheets/d/1RZl1t4MYZvq9OzZsDOilMF0pLLdg5-bpXrxMy14zskc).
 
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-```
+# User manuals
 
-## Documentation
+- [Managing workshops](manuals/workshop.md)
 
-### Functionnalities and specifications
+# Documentation
+
+## Functionnalities and specifications
 
 - [Badges](docs/badge.md)
 - [Certificates](docs/certificate.md)
@@ -34,7 +30,7 @@ graph TD;
 - [Registration form](docs/registration.md)
 - [Categories](docs/categories.md)
 
-### Installation of Moodle
+## Installation of Moodle
 
 The version of Moodle used is 3.11.
 
@@ -42,16 +38,16 @@ The version of Moodle used is 3.11.
 - [Multilingual preparation](docs/multilingual.md)
 - [List of additional plugins required](docs/plugins.md)
 
-### Graphic design
+## Graphic design
 
 - [Design specifications](docs/graphic_design.md)
 
-### Server specifications
+## Server specifications
 
 - PHP 7.4 or above compatible with Moodle 3.11
 - Mysql 5.6
 - Apache 2 server
 
-## External references
+# External references
 
 - Interesting presentation of AI course references on this website : https://eiaschum.ca/en/trainings

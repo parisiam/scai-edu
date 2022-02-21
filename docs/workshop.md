@@ -14,13 +14,13 @@ Cette activité est très intéressante car elle permet l'interactions entre les
 
 Mais elle n'a donc pas été conçue pour l'usage que souhaite en faire SCAI qui consiste à ouvrir le site à des individus séparés qui vont se présenter de façon aléatoire sur le site pendant toute la durée de vie de la plateforme.
 
-Il va donc falloir biaiser avec le système en créant successivement plusieurs workshops.
+Il va donc falloir ruser avec le système en créant successivement plusieurs workshops.
 
 Le workshop est consitué de **5 phases successives** : **Setup, Submission, Assessment, Grading, Closed**.
 
 ![image-20220220143524819](.img/workshop/image-20220220143524819.png)
 
-- Les apprenants déposer leur essai que dans la phase de Submission. 
+- Les apprenants ne déposent leur essai que dans la phase **Submission**. 
 - Les notes ne sont délivrées aux apprenants que lorsque le workshop est en phase **Closed**.
 
 # Paramétrage choisi
