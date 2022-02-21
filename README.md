@@ -30,7 +30,6 @@ The address of the website is https://scai-education.sorbonne-universite.fr and 
 
 The version of Moodle used is 3.11.
 
-- [List of installation steps](docs/installation.md)
 - [Using Git to install and update Moodle](docs/git.md)
 - [Multilingual preparation](docs/multilingual.md)
 - [List of additional plugins required](docs/plugins.md)
