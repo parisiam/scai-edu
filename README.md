@@ -18,6 +18,8 @@ The address of the website is https://scai-education.sorbonne-universite.fr and 
 
 ## Functionnalities and specifications
 
+This section explains what choices were made for the settings.
+
 - [Badges](docs/badge.md)
 - [Certificates](docs/certificate.md)
 - [Quiz](docs/quiz.md)
