@@ -8,10 +8,7 @@ This repository is used to share Moodle resources with SCAI team and it contains
 - User manuals
 - HTML templates and snippets
 
-The final address of the website will be https://scai-education.sorbonne-universite.fr and a demo version of the Moodle is available at https://moodle.parisiam.com
-
-Le document suivant résume l'état d'avancement des leçons du cours Thinking AI et des cours à venir :
-https://docs.google.com/spreadsheets/d/1RZl1t4MYZvq9OzZsDOilMF0pLLdg5-bpXrxMy14zskc
+The address of the website is https://scai-education.sorbonne-universite.fr and a demo version of the Moodle is available at https://moodle.parisiam.com. Checkout course and lesson summary [here](https://docs.google.com/spreadsheets/d/1RZl1t4MYZvq9OzZsDOilMF0pLLdg5-bpXrxMy14zskc).
 
 ## Documentation
 
