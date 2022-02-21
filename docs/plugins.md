@@ -33,10 +33,10 @@ Moodle plugin which tries to overcome some fixed appearance behaviours of Boost'
 
 # Theme
 
-The theme is also an additionnal plugin. The theme used is derived from the free version of the Moove theme:
+The theme is also an additionnal plugin. The theme used is derived and customized from the free version of the Moove theme:
 https://moodle.org/plugins/theme_moove (/theme/moove).
 
-But this theme has been quite customised so **it cannot be reused from its original version NOR updated from it.**
+🛑 **NEVER update the theme, it would completly crash the site.**
 
 
 
