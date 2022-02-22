@@ -10,63 +10,76 @@
 
 # References
 
-► Moodle installation: https://docs.moodle.org/311/en/Installing_Moodle
+► Moodle installation using Git: https://docs.moodle.org/311/en/Git_for_Administrators (3x/fr for the French version)
 
-► Using Git: https://docs.moodle.org/311/en/Git_for_Administrators,  https://docs.moodle.org/3x/fr/Git_pour_administrateurs
+► Standard Moodle installation: https://docs.moodle.org/311/en/Installing_Moodle
 
 ► Information about the types of plugins: https://docs.moodle.org/dev/Plugin_types
 
-# Installing/updating Moodle
+# Installing Moodle from an existing site or not
 
 These steps are valid for the creation of a new installation when updating an existing site. When you are updating the Moodle, before any operation, don't forget to backup :
 
-- The database.
-- The moodledata folder
-- The config file
-- The addtional plugins (themes, mods, filters...)
+- The **database**.
+- The **moodledata** folder
+- The **config.php** file
+- The **addtional plugins** (themes, mods, filters...)
 
-## Creating the Moodle repo
+## Create the Moodle repo
 
 The directory structure is:
 
 ```text
 /path/to/your/webroot/
-├── moodledata/
-└── public/ ---> website url points here
+├── moodledata/  <-- this directory must NOT be seen from internet
+└── public/ 	 <-- website url points here
 ```
 
-- If your are creating a new Moodle site:
+- If you <u>create</u> a new Moodle site:
 
 ```sh
-$ cd /path/to/your/webroot
-$ git clone git://git.moodle.org/moodle.git public # the /public folder may exist, but MUST be empty
+$ cd /path/to/your/webroot # A /public folder may exist inside webroot, but it MUST be empty
+```
+
+Then this:
+
+```sh
+$ git clone git://git.moodle.org/moodle.git public # Downloads ALL versions of Moodle ~500Mo (very long)
 $ cd public
-$ git branch -a # lists all available branches
+$ git branch -a # Check all available branches
 $ git branch --track MOODLE_311_STABLE origin/MOODLE_311_STABLE # --track: default branch for pull
 $ git checkout MOODLE_311_STABLE
 ```
 
+Or this:
+
+```sh
+$ git clone -b MOODLE_311_STABLE git://git.moodle.org/moodle.git public 
+# Downloads also ALL versions of Moodle ~500Mo (but no local master branch, which is good)
+```
+
 *Cloning through git may take a minute or 2. It should get the latest stable version of Moodle (including latest fixes).*
 
-- If you update an existing Moodle site, rename the directory containing the existing Moodle program and proceed as above.
+- If you <u>update</u> an existing Moodle site, rename the directory containing the existing Moodle program and proceed as above.
 
 ```sh
 $ cd /path/to/your/webroot
 $ mv public public_ # for example
+# Then proceed as above
 ```
 
 From here the Moodle program is installed BUT the **database**, the **/moodledata** folder and **config.php** file are missing. The **modules** need a special treatment too.
 
-## moodledata folder
+## Create the moodledata folder
 
-- If your are creating a new Moodle site, create a new **moodledata** folder.
+- If you <u>create</u> a new Moodle site, create a new **moodledata** folder.
 
 ```sh
 $ cd /path/to/your/webroot
-$ mkdir moodledata
+$ mkdir moodledata # Make sure the directory is writable
 ```
 
-- If you update an existing Moodle site, reuse the **database**.
+- If you <u>update</u> an existing Moodle site, reuse the **moodledata** folder.
 
 ```sh
 $ cd /path/to/your/webroot
@@ -74,18 +87,16 @@ $ mkdir moodledata # OR below
 $ cp -rp /path/to/old/moodledata moodledata # -p to preserve owner, dates, permissions
 ```
 
-Make sure the `/moodledata` directory is writable.
+## Create the database
 
-## Database
-
-- If your are creating a new Moodle site, create a new database.
-- If you update an existing Moodle site, reuse the **database** (don't forget the backups).
+- If you are <u>create</u> a new Moodle site, create a new database.
+- If you <u>update</u> an existing Moodle site, reuse the **database** (don't forget to make backups).
 
 Collation: **utf8mb4_unicode_ci**.
 
-## config.php
+## Setup  the config.php file
 
-- If your are creating a new Moodle site, create a **config.php** file in root folder:
+- If you <u>create</u> a new Moodle site, create a **config.php** file in root folder and set it up:
 
 ```php
 <?php
@@ -105,7 +116,7 @@ $CFG->dboptions = array (
   'dbsocket' => '',
   'dbcollation' => 'utf8mb4_unicode_ci',
 );
-$CFG->wwwroot   = 'https://my_moodle_url';  // USE https NOT http
+$CFG->wwwroot   = 'https://my_moodle_url';  // USE https NOT http, NO trailing /
 $CFG->dataroot  = '/path/to/moodledata'; 
 $CFG->admin     = 'admin';
 $CFG->directorypermissions = 0777;
@@ -118,15 +129,25 @@ $CFG->upgradekey = 'secret';
 
 - If you update an existing Moodle site, reuse the **config.php** (don't forget to adjust it, if necessary, and to back it up).
 
-## Modules
+## Empty the caches
+
+If you update from an existing Moodle, better empty the cache before accessing the new installation. An easy way to empty the cache is to empty the following sub-directories from moodledata (and **ONLY** these ones):
+
+```text
+moodledata/
+├── cache/      <-- Empty this folder
+├── localcache/ <-- Empty this folder
+└── sessions/   <-- Empty this folder (it will delog all users)
+```
+
+## Add the plugins
 
 - When creating a new Moodle installation, there are no additional modules, so there is nothing to do, for now.
 
 - When you update and existing Moodle, you must identify all the modules you have added.
+  Copy all the modules installed in the old version: Each module is normally located into a directory indicated below.
 
-Copy all the modules installed in the old version. Each module is normally located into a directory.
-
-### Find your additional plugins
+### Plugins used
 
 The list of installed plugins are found through *Site administration > Plugins > Plugins overview*, and then *All plugins*.
 The plugins marked as **Additional** in the list are those installed on top of the standard Moodle installation.
@@ -162,9 +183,34 @@ $ echo /path/to/plugin/ >> .git/info/exclude
 
 ## Cron
 
-Setting up the cron is **ESSENTIAL** and it should run every minute.
+Setting up the cron is **ESSENTIAL** and it should run **every minute**.
 
 ```php
 /usr/local/bin/php /path/to/moodle/admin/cli/cron.php
 ```
+
+# Updating the git version
+
+- To check all the versions available on the remote:
+
+```sh
+$ git remote show origin
+```
+
+- To check if the remote has been updated and if we are behind:
+
+```sh
+$ git status -uno 
+# or:
+$ git fetch # git fetch origin ?
+$ git status
+```
+
+- If there is a new version (there should be weekly updates), just **pull** the content:
+
+```sh
+$ git pull
+```
+
+> Of course you should make a copy and test the upgrade on the copy before upgrading the production version (and make backups, and delog the users).
 
