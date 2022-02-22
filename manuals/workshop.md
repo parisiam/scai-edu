@@ -4,7 +4,7 @@
 
 # Les contraintes
 
-Cette activité est très intéressante car elle permet l'interactions entre les apprenants (peer assessement) et demande un effort de réflexion intéressant. Mais elle n'a donc pas été conçue pour l'usage que souhaite en faire SCAI qui consiste à ouvrir le site à des individus séparés qui vont se présenter de façon aléatoire sur le site pendant toute la durée de vie de la plateforme. Il va donc falloir ruser avec le système.
+Cette activité est très intéressante car elle permet l'interaction entre les apprenants (peer assessement) et demande un effort de réflexion intéressant. Mais elle n'a pas été conçue pour l'usage que souhaite en faire SCAI qui consiste à ouvrir le site à des individus séparés qui vont se présenter de façon aléatoire sur le site pendant toute la durée de vie de la plateforme. Il va donc falloir s'adapter au fonctionnement du workshop.
 
 Le workshop est consitué de **5 phases successives** : **Setup, Submission, Assessment, Grading, Closed**. C'est une activité qui possède de nombreuses contraintes :
 
