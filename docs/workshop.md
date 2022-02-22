@@ -4,7 +4,7 @@
 
 # Fonctionnement du Workshop
 
-Le workshop est consitué de **5 phases successives** : **Setup, Submission, Assessment, Grading, Closed**:
+Le workshop est consitué de **5 phases successives** : **Setup, Submission, Assessment, Grading, Closed**.
 
 - Les apprenants ne peuvent déposer leur essai que dans la phase **Submission**. 
 - Les notes ne sont délivrées aux apprenants que lorsque le workshop est en phase **Closed**.
