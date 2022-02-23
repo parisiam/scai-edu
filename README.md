@@ -1,4 +1,4 @@
-# SCAI Education website
+# SCAI Education website (Moodle)
 
 SCAI Education is a website prepared by [Parisiam](https://parisiam.com) for [SCAI](http://scai.sorbonne-universite.fr) : it presents a series of courses in the Artificial Intelligence field and uses [Moodle](https://moodle.org) as LMS.
 
@@ -47,7 +47,7 @@ The version of Moodle used is 3.11.
 ## Server specifications
 
 - PHP 7.4 or above compatible with Moodle 3.11
-- Mysql 5.6
+- Mysql 5.7
 - Apache 2 server
 
 # External references
