@@ -5,14 +5,17 @@
 # In a nutshell
 
 - Git is very usefull when installing and upgrading the **core Moodle program**: It makes things much simpler.
-- However, to install or upgrade the additional **plugins**, even when using git for the core program, it it still possible (and simpler) to use Moodle web interface.
-- When using git, the additional plugins MUST be excluded from git using the **.git/info/exclude** file and NOT the .gitignore file.
+- It is possible (and simpler) to upgrade the additional **plugins**, with the Moodle web interface (not Git).
+- Additional plugins MUST be excluded from git using the **.git/info/exclude** file and **NOT** the .gitignore file.
 
 # Moodle documentation
 
 ► Moodle installation using Git: https://docs.moodle.org/311/en/Git_for_Administrators (3x/fr for the French version)
+
 ► Standard Moodle installation: https://docs.moodle.org/311/en/Installing_Moodle
+
 ► Upgrading Moodle: https://docs.moodle.org/311/en/Upgrading
+
 ► Information about the types of plugins: https://docs.moodle.org/dev/Plugin_types
 
 # Installing Moodle
