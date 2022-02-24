@@ -1,4 +1,4 @@
-<h1>INSTALLATION AND UPDATE USING GIT</h1>
+<h1>GIT INSTALLATION AND UPGRADE OF MOODLE</h1>
 
 [TOC]
 
@@ -173,10 +173,10 @@ moodledata/
 ```
 
 ```sh
-$ cd /path/to/moodle
-$ rm -rf moodledata/cache/{*,.*}
-$ rm -rf moodledata/localcache/{*,.*}
-$ rm -rf moodledata/sessions/{*,.*}
+cd /path/to/moodle # NOT public/
+rm -rf moodledata/cache/{*,.*}
+rm -rf moodledata/localcache/{*,.*}
+rm -rf moodledata/sessions/{*,.*}
 ```
 
 ## Add the plugins
@@ -205,7 +205,7 @@ filter/sagecell
 
 ```sh
 # Tar files in current Moodle
-cd /path/to/old/moodle
+cd /path/to/old/moodle # do NOT go to the public folder
 mkdir plugins
 tar -czf plugins/moove.tgz public/theme/moove
 tar -czf plugins/tiles.tgz public/course/format/tiles
@@ -310,22 +310,20 @@ At that point Moodle has been upgraded. To make sure of it, sign in as admin and
 - To check all the versions available on the remote:
 
 ```sh
-$ git remote show origin
+git remote show origin
 ```
 
 - To check if the remote has been updated and if we are behind:
 
 ```sh
-$ git status -uno 
-# or:
-$ git fetch # git fetch origin ?
-$ git status
+git fetch # git fetch origin
+git status -uno 
 ```
 
 - If there is a new version (there should be weekly updates), just **pull** the content:
 
 ```sh
-$ git pull
+git pull
 ```
 
 > Of course you should make a copy and test the upgrade on the copy before upgrading the production version (and make backups, and delog the users).
