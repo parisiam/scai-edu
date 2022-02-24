@@ -386,7 +386,16 @@ Upgrading a Moodle is not a smooth operation and many problems may occur.
 
 ## Update loop of hell
 
-Coming soon.
+Plugins should only be updated if required inside the Moodle. If a new version of a plugin is issued but not required by your Moodle, the next time you update Moodle, you might be locked in the update screens in an infinite loop. It will be impossible to relaunch the website. Moodle will ask you to downgrade the plugins without offering any ways to do it nor explaining.
+
+If for example we have this message: ***Cannot downgrade mod_coursecertificate from 2022011800 to 2021073000.***
+
+Here is a solution:
+
+- Find and download the downgraded version indicated by Moodle at https://moodle.org/plugins (2021073000 in the example)
+- Replace the current version by the 2021073000 version in the file system.
+- Find and replace the 2022011800 version number in the **mdl_config_plugins** table and replace its value by 2021073000.
+- Return to the update screen and finish the upgrade process.
 
 # Command lines for MySQL
 
