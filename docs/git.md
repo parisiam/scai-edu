@@ -18,7 +18,9 @@
 
 ► Information about the types of plugins: https://docs.moodle.org/dev/Plugin_types
 
-# Installing Moodle
+# Prepare the server
+
+## Backup
 
 These steps are valid for the creation of a new installation or when updating an existing site. When you are updating the Moodle, before any operation, don't forget to backup :
 
@@ -27,7 +29,7 @@ These steps are valid for the creation of a new installation or when updating an
 - The **config.php** file
 - The **addtional plugins** (themes, mods, filters...)
 
-## Create the Moodle repo
+## Create the directory structure
 
 The directory structure is:
 
@@ -37,64 +39,78 @@ The directory structure is:
 └── public/ 	 <-- website url points here
 ```
 
+## Prepare the web server
+
+It is time to make sure the server is ready:
+
+- SSL certificate
+- PHP ini (see below)
+- Web root pointing to the `public/` folder
+
+When running for the first time, Moodle will indicate if adjustements are necessary (missing php extension, php variables to adjust).
+
+# Installing Moodle
+
+## Pull Moodle from git
+
 - If you <u>create</u> a new Moodle site:
 
+A `public/` folder may already exist inside the `moodle/` directory , but it MUST be empty.
+
 ```sh
-$ cd /path/to/moodle # A /public folder may exist inside webroot, but it MUST be empty
+cd /path/to/moodle
+# Downloads also versions of Moodle ~500Mo (but no local master branch, which is good)
+git clone -b MOODLE_311_STABLE git://git.moodle.org/moodle.git public
+# Adjust owner and group
+chown -R apache:apache public
 ```
 
-Then this:
+It is also possible to do this:
 
 ```sh
-$ git clone git://git.moodle.org/moodle.git public # Downloads ALL versions of Moodle ~500Mo (very long)
-$ cd public
-$ git branch -a # Check all available branches
-$ git branch --track MOODLE_311_STABLE origin/MOODLE_311_STABLE # --track: default branch for pull
-$ git checkout MOODLE_311_STABLE
-```
-
-Or this:
-
-```sh
-$ git clone -b MOODLE_311_STABLE git://git.moodle.org/moodle.git public 
-# Downloads also ALL versions of Moodle ~500Mo (but no local master branch, which is good)
+cd /path/to/moodle
+# Downloads ALL versions of Moodle ~500Mo (very long)
+git clone git://git.moodle.org/moodle.git public
+cd public
+git branch -a # Check all available branches
+git branch --track MOODLE_311_STABLE origin/MOODLE_311_STABLE # --track: default branch for pull
+git checkout MOODLE_311_STABLE
+# Adjust owner and group
+cd ..
+chown -R apache:apache public
 ```
 
 *Cloning through git may take a minute or 2. It should get the latest stable version of Moodle (including latest fixes).*
 
-- If you <u>update</u> an existing Moodle site, rename the directory containing the existing Moodle program and proceed as above.
-
-```sh
-$ cd /path/to/moodle
-$ mv public public_ # for example
-# Then proceed as above
-```
-
-From here the Moodle program is installed BUT the **database**, the **/moodledata** folder and **config.php** file are missing. The **modules** need a special treatment too.
+From here the Moodle program is installed BUT the **plugins**, the **database**, the **moodledata/** folder and **config.php** file are missing.
 
 ## Create the moodledata folder
 
 - If you <u>create</u> a new Moodle site, create a new **moodledata** folder.
 
 ```sh
-$ cd /path/to/moodle
-$ mkdir moodledata # Make sure the directory is writable
+cd /path/to/moodle
+mkdir moodledata # Make sure the directory is writable
+chown -R apache:apache moodledata
 ```
 
 - If you <u>update</u> an existing Moodle site, reuse the **moodledata** folder.
 
 ```sh
-$ cd /path/to/moodle
-$ mkdir moodledata # OR below
-$ cp -rp /path/to/old/moodledata moodledata # -p to preserve owner, dates, permissions
-# OR copy the moodledata.tar.gz file and unzip it
+cd /path/to/moodle
+mkdir moodledata # OR below
+cp -rp /path/to/old/moodledata moodledata # -p to preserve owner, dates, permissions
+# Adjust owner and group
+chown -R apache:apache moodledata
 ```
 
 OR copy the moodledata.tar.gz file in the moodle folder and unzip it
 
 ```sh
-$ cd /path/to/moodle
-$ tar -xzf moodledata.tar.gz
+cd /path/to/moodle
+tar -xzf moodledata.tar.gz
+# Adjust owner and group
+chown -R apache:apache moodledata
 ```
 
 ### Permissions on moodledata folder
@@ -102,13 +118,13 @@ $ tar -xzf moodledata.tar.gz
 The moodledata directory must be **readable AND writeable** by the web server user which depends on your system. 
 
 ```sh
-$ chown -R <www_user>:<www_user> /path/to/moodle/moodledata
-$ cmod -R 0750 /path/to/moodle/moodledata # Adjust permissions according to your server
+chown -R apache:apache /path/to/moodle/moodledata 
+cmod -R 0750 /path/to/moodle/moodledata # Adjust permissions according to your server
 ```
 
-> The user might be the webserver user or the root user, it depends on the server. www-data or root, for example.
+> The user might be the webserver user or the root user, it depends on the server. www-data, root or apache, for example.
 
-Note: you might need access to sudo to change permissions and ownership.
+Note: you might need access to sudo (sudo -i) to change permissions and ownership.
 
 Make sure this is coherent to what's in the `config.php` file:
 
@@ -117,6 +133,25 @@ $CFG->directorypermissions = 0777; # Maybe avoid the default 0777 (it might be u
 ```
 
 > Usually the permission is 0750, 0755 or 0775, it depends on the server.
+
+### Empty the caches
+
+If you update from an existing Moodle, better empty the cache before accessing the new installation. An easy way to empty the cache is to empty the following sub-directories from moodledata (and **ONLY** these ones):
+
+```text
+moodledata/
+├── cache/      <-- Empty this folder
+├── localcache/ <-- Empty this folder
+└── sessions/   <-- Empty this folder (it will delog all users)
+*** DO NOT EMPTY ANY OTHER FOLDER (do not mess around, believe me) ***
+```
+
+```sh
+cd /path/to/moodle # NOT public/
+rm -rf moodledata/cache/{*,.*}
+rm -rf moodledata/localcache/{*,.*}
+rm -rf moodledata/sessions/{*,.*}
+```
 
 ## Create the database
 
@@ -160,25 +195,6 @@ $CFG->upgradekey = 'secret';
 
 - If you update an existing Moodle site, reuse the **config.php** (don't forget to adjust it, if necessary, and to back it up).
 
-## Empty the caches
-
-If you update from an existing Moodle, better empty the cache before accessing the new installation. An easy way to empty the cache is to empty the following sub-directories from moodledata (and **ONLY** these ones):
-
-```text
-moodledata/
-├── cache/      <-- Empty this folder
-├── localcache/ <-- Empty this folder
-└── sessions/   <-- Empty this folder (it will delog all users)
-*** DO NOT EMPTY ANY OTHER FOLDER (do not mess around, believe me) ***
-```
-
-```sh
-cd /path/to/moodle # NOT public/
-rm -rf moodledata/cache/{*,.*}
-rm -rf moodledata/localcache/{*,.*}
-rm -rf moodledata/sessions/{*,.*}
-```
-
 ## Add the plugins
 
 - When creating a new Moodle installation, there are no additional modules, so there is nothing to do, for now.
@@ -186,15 +202,13 @@ rm -rf moodledata/sessions/{*,.*}
 - When you update and existing Moodle, you must identify all the modules you have added.
   Copy all the modules installed in the old version: Each module is normally located into a directory indicated below.
 
-### Plugins used
+### List of plugins used in our Moodle installation
 
 The list of installed plugins are found through *Site administration > Plugins > Plugins overview*, and then *All plugins*.
 The plugins marked as **Additional** in the list are those installed on top of the standard Moodle installation.
 
-I've seen 2 diferent screens listing the plugins. On one of them, the path where the plugin is found is indicated : `https://<moodle_url>/admin/index.php?cache=0&confirmrelease=1&confirmplugincheck=0&showallplugins=1`
-
-```text
-theme/moove
+```sh
+theme/moove # Attention, it is a customized version
 course/format/tiles
 filter/filtercodes
 local/boostnavigation
@@ -202,11 +216,19 @@ mod/coursecertificate
 admin/tool/certificate
 filter/sagecell
 ```
+Note: I've seen 2 different screens listing the plugins. On one of them, the path where the plugin is found is indicated as: `https://<moodle_url>/admin/index.php?cache=0&confirmrelease=1&confirmplugincheck=0&showallplugins=1`
+
+### Tar the plugins from the current Moodle
 
 ```sh
-# Tar files in current Moodle
-cd /path/to/old/moodle # do NOT go to the public folder
+# Create plugins/ folders in both the new and old Moodles (if there are on different servers)
 mkdir plugins
+```
+
+
+```sh
+cd /path/to/old/moodle # Do NOT go to the public folder
+# Note that the path is registered within the .tgz file
 tar -czf plugins/moove.tgz public/theme/moove
 tar -czf plugins/tiles.tgz public/course/format/tiles
 tar -czf plugins/filtercodes.tgz public/filter/filtercodes
@@ -214,8 +236,15 @@ tar -czf plugins/boostnavigation.tgz public/local/boostnavigation
 tar -czf plugins/coursecertificate.tgz public/mod/coursecertificate
 tar -czf plugins/certificate.tgz public/admin/tool/certificate
 tar -czf plugins/sagecell.tgz public/filter/sagecell
-# Untar files in new installation (files already copied in plugins folder in new installation)
-# No need to specify the path (as in: -C public/theme): it was registered when taring
+```
+
+Then, move the .tgz files to the `plugins/` folder on the new server (if old and new Moodle are on different servers).
+
+### Untar the plugins in the new Moodle
+
+```sh
+# We suppose the .tgz files are already copied in plugins folder in new installation.
+# No need to specify the path (as in: -C public/theme) as the path was registered when taring.
 cd /path/to/new/moodle
 tar -xzf plugins/moove.tgz
 tar -xzf plugins/tiles.tgz
@@ -226,19 +255,36 @@ tar -xzf plugins/certificate.tgz
 tar -xzf plugins/sagecell.tgz
 ```
 
-## When adding a plugin
+### Rectify ownership of the plugins
 
-Any additional plugin should be excluded from git, but NOT using the `.gitignore` file which should remain untouched (it will be updated with the rest of the files next time you use git to update Moodle).
-
-Instead, it should be manually added to the **.git/info/exclude** file:
+Check the owner and group of the untared plugin folders and if necessary, adjust the owner and group to the new server (apache:apache is just given as example).
 
 ```sh
-$ cd /path/to/moodle
-$ echo /path/to/plugin/ >> .git/info/exclude
+# Do 'chown -cR' to have more verbosity
+chown -R apache:apache public/theme/moove
+chown -R apache:apache public/course/format/tiles
+chown -R apache:apache public/filter/filtercodes
+chown -R apache:apache public/local/boostnavigation
+chown -R apache:apache public/mod/coursecertificate
+chown -R apache:apache public/admin/tool/certificate
+chown -R apache:apache public/filter/sagecell
+# Or simply reset the ownership to the whole public/ folder
+chown -R apache:apache public
+```
+
+## Exclude the plugins from Git
+
+Any additional plugin should be excluded from git, but **NOT using the `.gitignore` file** which should remain untouched (it will be updated with the rest of the files next time you use git to update Moodle).
+
+Instead, it should be manually added to the **.git/info/exclude** file as in:
+
+```sh
+cd /path/to/moodle
+echo /path/to/plugin/ >> .git/info/exclude
 ```
 
 ```sh
-cd /path/to/moodle # Moodle root, NOT public/
+cd /path/to/moodle # Go to Moodle root, NOT public/
 echo theme/moove/ >> public/.git/info/exclude
 echo course/format/tiles/ >> public/.git/info/exclude
 echo filter/filtercodes/ >> public/.git/info/exclude
@@ -247,6 +293,38 @@ echo mod/coursecertificate/ >> public/.git/info/exclude
 echo admin/tool/certificate/ >> public/.git/info/exclude
 echo filter/sagecell/ >> public/.git/info/exclude
 ```
+
+## Light the fire
+
+We're almost there. You must open the admin url and finish the intallation in the browser:
+
+```html
+https://<url_to_moodle>/admin
+```
+
+Follow the instructions on screen and adjust the server of necessary. You may directly click on the *Update the database* button for the first round, without updating any plugin.
+
+If you are sent to the login screen afterwards, it means the process was successful. If not, you might be caught in the "update loop of hell" (you can't leave the update process). See Problems section below.
+
+At that point Moodle has been upgraded. To make sure of it, signin as admin and go to *Site administration > Notifications:
+
+- Check the Moodle version at the bottom of the page.
+- Click the **plugin overview** link.
+- Upgrade the plugins by clicking the *Install this update* buttons, if any. 
+
+## Email settings
+
+### No-reply
+
+You need an email address for the emails sent by the system, something like **noreply@<moodle_url>**.
+
+### SMTP settings
+
+Go to **Site Administration > Server > Outgoing mail configuration**.
+
+Either leave everything empty (but I guess the php mail function will be used) or enter the SMTP server an settings.
+
+Don't forget to save and **Test outgoing mail configuration**.
 
 ## Cron
 
@@ -261,47 +339,22 @@ $ crontab -e
 # Adjust the paths and variables
 # MAILTO="my@email.com"
 # SHELL="/bin/bash"
-*/1 * * * * /usr/local/bin/php /path/to/moodle/public/admin/cli/cron.php
+# >/dev/null prevents from receiving a mail every minute
+*/1 * * * * /usr/bin/php /path/to/moodle/public/admin/cli/cron.php >/dev/null
 ```
 
-You may also run manually the CRON, if allowed in advance by the administrator and if a password was set:
+To find the path and version of php:
+
+```sh
+which -a php
+php --version
+```
+
+You may also run manually the CRON but it must be allowed in advance by the administrator and a password must be set.
 
 ```html
 https://<moodle_url>/admin/cron.php?password=<password>
 ```
-
-## Server: SSL certificate, PHP ini
-
-Make sure the server is ready:
-
-- SSL certificate
-- PHP ini (see below)
-- Web root
-- ...
-
-## Email settings
-
-It's complicated. We don't explain that here.
-
-## Light the fire
-
-We're almost there. You must open the admin url and finish the intallation in the browser:
-
-```
-https://<url_to_moodle>/admin
-```
-
-Follow the instructions on screen and adjust the server of necessary.
-
-Mostly click on the *Update the database* button for the first round, without updating any plugin.
-
-If you are sent to the login screen, it means the process was successful. If not, you might be caught in the "update loop of hell" (you can't leave the update process). See Problems section below.
-
-At that point Moodle has been upgraded. To make sure of it, sign in as admin and go to *Site administration > Notifications:
-
-- Check the Moodle version at the bottom of the page.
-- Click the **plugin overview** link.
-- Upgrade the plugins by clicking the *Install this update* buttons, if any. 
 
 # Upgrading the git version of Moodle
 
@@ -310,20 +363,21 @@ At that point Moodle has been upgraded. To make sure of it, sign in as admin and
 - To check all the versions available on the remote:
 
 ```sh
-git remote show origin
+git remote show origin # In the comment, there are indications if the local is behind the remote
 ```
 
 - To check if the remote has been updated and if we are behind:
 
 ```sh
 git fetch # git fetch origin
-git status -uno 
+git status
+git status -uno # Same as above without showing untracked files
 ```
 
 - If there is a new version (there should be weekly updates), just **pull** the content:
 
 ```sh
-git pull
+git pull # In case of error see chapter Problems encountered... below
 ```
 
 > Of course you should make a copy and test the upgrade on the copy before upgrading the production version (and make backups, and delog the users).
@@ -362,6 +416,28 @@ if something goes wrong, start again the upgrade process on the copy.
 
 Upgrading a Moodle is not a smooth operation and many problems may occur.
 
+## Git error when pulling a new version of Moodle
+
+This error seems to occur with new versions of git (> 2.4) when tryong to pull the repository from the remote.
+
+```sh
+# Error message (REPO is the path to the repository):
+fatal: "unsafe repository" (REPO is owned by someone else)
+fatal: "dépôt non sécurisé" (REPO appartient à quelqu'un d'autre)
+# this is followed by this message:
+To add an exeption to this repository:
+	git config --global --add safe.directory REPO
+```
+
+➜ The solution is:
+
+```sh
+cd .. # Go to the parent folder (the moodle/ folder)
+git config --global --add safe.directory REPO # Execute the command indicated in the message
+```
+
+See: https://github.com/actions/checkout/issues/760
+
 ## Importing the database fails
 
 - The sql dump is too big: try to **zip** it or **tar.gz** it.
@@ -376,7 +452,11 @@ Upgrading a Moodle is not a smooth operation and many problems may occur.
 
 ## Images are broken
 
+When images are broken, you see this:
+
 ![image-20220223102944019](.img/git/image-20220223102944019.png)
+
+The following action may help fixing the problem:
 
 - Empty the caches folders (cache, localcache, sessions).
 - Check and adjust the permissions of the moodledata folder.
@@ -395,7 +475,7 @@ Here is a solution:
 - Find and replace the 2022011800 version number in the **mdl_config_plugins** table and replace its value by 2021073000.
 - Return to the update screen and finish the upgrade process.
 
-# Command lines for MySQL
+# Useful command lines for MySQL
 
 Here is a series of MySQL commands to prepare the database directly from the command line. It's not possible on every host.
 
