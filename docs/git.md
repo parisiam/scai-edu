@@ -20,9 +20,11 @@
 
 # Prepare the server
 
+These steps are valid for the creation of a new installation or when updating an existing site. 
+
 ## Backup
 
-These steps are valid for the creation of a new installation or when updating an existing site. When you are updating the Moodle, before any operation, don't forget to backup :
+When you are updating the Moodle, before any operation, don't forget to backup :
 
 - The **database**.
 - The **moodledata** folder
@@ -44,10 +46,10 @@ The directory structure is:
 It is time to make sure the server is ready:
 
 - SSL certificate
-- PHP ini (see below)
+- PHP ini
 - Web root pointing to the `public/` folder
 
-When running for the first time, Moodle will indicate if adjustements are necessary (missing php extension, php variables to adjust).
+When running for the first time, Moodle will indicate if adjustements are necessary (missing php extension, php variables to adjust...).
 
 # Installing Moodle
 
