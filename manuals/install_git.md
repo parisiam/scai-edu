@@ -1,4 +1,6 @@
-<h1>GIT INSTALLATION AND UPGRADE OF MOODLE</h1>
+<h1>INSTALLATION AND UPGRADE OF MOODLE USING GIT</h1>
+
+
 
 [TOC]
 
@@ -459,7 +461,7 @@ See: https://github.com/actions/checkout/issues/760
 
 When images are broken, you see this:
 
-![image-20220223102944019](.img/git/image-20220223102944019.png)
+![image-20220223102944019](.img/install_git/image-20220223102944019.png)
 
 The following action may help fixing the problem:
 

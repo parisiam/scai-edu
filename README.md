@@ -13,6 +13,8 @@ The address of the website is https://scai-education.sorbonne-universite.fr
 # User manuals
 
 - [Managing workshops](manuals/workshop.md)
+- [Maintenance mode](manuals/maintenance.md)
+- [Install and update Moodle using Git](manuals/install_git.md)
 
 # Documentation
 
@@ -36,7 +38,7 @@ This section explains what choices were made for the settings.
 
 The version of Moodle used is 3.11.
 
-- [Using Git to install and update Moodle](docs/git.md)
+- [Using Git to install and update Moodle](manuals/install_git.md)
 - [Multilingual preparation](docs/multilingual.md)
 - [List of additional plugins required](docs/plugins.md)
 
