@@ -388,7 +388,8 @@ git pull # In case of error see chapter Problems encountered... below
 
 **<u>First steps</u>**:
 
-- Put server in maintenance mode : Go to `Adminsitration > Server > Maintenance mode`.
+- Put server in maintenance mode: Go to `Adminsitration > Server > Maintenance mode`.
+- Stop the cron: Go to `Administration > Server > Tasks > Task processing` (cron_enabled).
 - Zip the `public/` and the `moodledata/` folders, backup the `config.php` file.
 - Make a sql dump of the database.
 
@@ -412,7 +413,8 @@ if something goes wrong, start again the upgrade process on the copy.
 
 **<u>Back to normal</u>**:
 
-- Remove the maintenance mode with an admin account at https://moodle.parisiam.com/login/index.php
+- Remove the maintenance mode with an admin account.
+- Restart the cron.
 
 # Problems encountered when upgrading
 
@@ -420,7 +422,8 @@ Upgrading a Moodle is not a smooth operation and many problems may occur.
 
 ## Git error when pulling a new version of Moodle
 
-This error seems to occur with new versions of git (> 2.4) when tryong to pull the repository from the remote.
+This error seems to occur with new versions of git (> 2.4) when trying to pull the repository from the remote.
+It may happen if you create the repo with sudo and then try to access (got status) or pull with the non root user.
 
 ```sh
 # Error message (REPO is the path to the repository):

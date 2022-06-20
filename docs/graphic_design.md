@@ -60,7 +60,6 @@ On a également une image "blanche" (cad vide ou avec des motifs géométriques,
 # Page d'un cours
 
 Pour avoir accès à cette page, il faut être connecté. Seul le cours Thinking AI contient la structure indiquée ici.
-Exemple de page dans la démo : [https://moodle.parisiam.com/course/view.php?id=13](https://www.google.com/url?q=https://moodle.parisiam.com/course/view.php?id%3D13&sa=D&source=editors&ust=1645361276064335&usg=AOvVaw1mZeEx20tlGoeV2hYAyPME) 
 
 **Dimensions de chaque vignette 360 x 240, 72 dpi.**
 

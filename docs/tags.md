@@ -38,8 +38,6 @@ Il existe aussi dans Moodle une page de recherche de tags, mais elle n'apparait 
 
 Il faut taper son URL manuellement : **https://<url_de_moodle>/tag**  ou **https://<url_de_moodle>/tag/search.php** 
 
-Dans la version démo : https://moodle.parisiam.com/tag 
-
 # Les tags dans Moodle
 
 Il y a 2 types de tags, les tags "**standards**" cad officiels, créés par l'admin, et les tags "**libres**" créés par les étudiants dans leur profil.
