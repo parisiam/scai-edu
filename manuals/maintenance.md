@@ -8,7 +8,7 @@ Maintenance mode is for preventing any users other than administrators from usin
 
 Go to `Administration > Server > Maintenance mode`  and set **Maintenance mode** (maintenance_enabled) to Enable.
 
-![CleanShot 2022-06-20 at 22.19.03](.img/maintenance/CleanShot 2022-06-20 at 22.19.03.jpg)
+![manintenance_mode](.img/maintenance/manintenance_mode.jpg)
 
 For more see: https://docs.moodle.org/311/en/Maintenance_mode
 
@@ -18,7 +18,7 @@ Cron should normally be enabled, however this setting allows it to be disabled t
 
 Go to  `Administration > Server > Tasks > Task processing`  and uncheck **Enable cron** (cron_enabled).
 
-![CleanShot 2022-06-20 at 22.23.42](.img/maintenance/CleanShot 2022-06-20 at 22.23.42.jpg)
+![cron](.img/maintenance/cron.jpg)
 
 # Pause registration
 
@@ -26,7 +26,7 @@ This mode is not a maintenance mode strictly speaking and in this mode, already 
 
 Go to Site `Administration > Plugins > Authentication > Manage authentication`, and set **Self registration** (registerauth) to disable.
 
-![CleanShot 2022-06-20 at 22.08.02](.img/maintenance/CleanShot 2022-06-20 at 22.08.02.jpg)
+![registration](.img/maintenance/registration.jpg)
 
 To resume registration, choose *Email-based self-registration*.
 
