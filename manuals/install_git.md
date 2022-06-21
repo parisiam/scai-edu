@@ -138,7 +138,7 @@ $CFG->directorypermissions = 0777; # Maybe avoid the default 0777 (it might be u
 
 > Usually the permission is 0750, 0755 or 0775, it depends on the server.
 
-### Empty the caches
+### Empty the caches (optional)
 
 If you update from an existing Moodle, better empty the cache before accessing the new installation. An easy way to empty the cache is to empty the following sub-directories from moodledata (and **ONLY** these ones):
 
@@ -156,6 +156,8 @@ rm -rf moodledata/cache/{*,.*}
 rm -rf moodledata/localcache/{*,.*}
 rm -rf moodledata/sessions/{*,.*}
 ```
+
+Note: This step isn't strictly necessary.
 
 ## Create the database
 
