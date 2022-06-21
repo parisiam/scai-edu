@@ -427,7 +427,7 @@ Upgrading a Moodle is not a smooth operation and many problems may occur.
 ## Git error when pulling a new version of Moodle
 
 This error seems to occur with new versions of git (> 2.4) when trying to pull the repository from the remote.
-It may happen if you create the repo with sudo and then try to access (got status) or pull with the non root user.
+It may happen if you create the repo with sudo (root user) and then try to access (i.e. git status or pull) with another user.
 
 ```sh
 # Error message (REPO is the path to the repository):
