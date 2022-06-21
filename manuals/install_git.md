@@ -123,20 +123,18 @@ The moodledata directory must be **readable AND writeable** by the web server us
 
 ```sh
 chown -R apache:apache /path/to/moodle/moodledata 
-cmod -R 0750 /path/to/moodle/moodledata # Adjust permissions according to your server
+cmod -R 0755 /path/to/moodle/moodledata # Adjust permissions according to your server, if necessary
 ```
 
-> The user might be the webserver user or the root user, it depends on the server. www-data, root or apache, for example.
+> The user and group might be the webserver user, root, www-data, apache... and you might need access to sudo (sudo -i) to change permissions and ownership.
 
-Note: you might need access to sudo (sudo -i) to change permissions and ownership.
-
-Make sure this is coherent to what's in the `config.php` file:
+Make sure the permissions used above are coherent to what's in the `config.php` file:
 
 ```php
-$CFG->directorypermissions = 0777; # Maybe avoid the default 0777 (it might be unsafe)
+$CFG->directorypermissions = 0775;
 ```
 
-> Usually the permission is 0750, 0755 or 0775, it depends on the server.
+> Permission are usually 0750, 0755 or 0775, it depends on the server (0777 might be unsafe).
 
 ### Empty the caches (optional)
 
