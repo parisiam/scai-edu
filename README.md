@@ -8,12 +8,15 @@ This repository is used to share Moodle resources with SCAI team and it contains
 - Documentation
 - HTML templates and snippets
 
+Most of the pages are redacted in English but some are in French.
+
 The address of the website is https://scai-education.sorbonne-universite.fr
 
 # User manuals
 
 - [Managing workshops](manuals/workshop.md)
 - [Maintenance mode](manuals/maintenance.md)
+- [User management](manuals/user_management.md)
 - [Install and update Moodle using Git](manuals/install_git.md)
 
 # Documentation
