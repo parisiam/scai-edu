@@ -30,3 +30,17 @@ Go to Site `Administration > Plugins > Authentication > Manage authentication`, 
 
 To resume registration, choose *Email-based self-registration*.
 
+# Purge the caches
+
+Go to Site `Administration > Development > Purge all the caches`, and click **Purge the caches**.
+
+There is no danger in purging caches, but your site may appear slower for a while until the server and clients calculate new information (themes, javascript, language strings, filtered text...) and cache it.
+
+It is also possible to delete directly the content of some folders in the moodledata folder but this method has to be used with much caution.
+
+# Logs
+
+Logs are currently never deleted. If the database has grown excessively, it's maybe time to shrink the log.
+
+https://www.elearningworld.org/excessive-moodle-lms-logs-part-1/
+
