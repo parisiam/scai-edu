@@ -123,7 +123,7 @@ The moodledata directory must be **readable AND writeable** by the web server us
 
 ```sh
 chown -R apache:apache /path/to/moodle/moodledata 
-cmod -R 0755 /path/to/moodle/moodledata # Adjust permissions according to your server, if necessary
+chmod -R 0755 /path/to/moodle/moodledata # Adjust permissions according to your server, if necessary
 ```
 
 > The user and group might be the webserver user, root, www-data, apache... and you might need access to sudo (sudo -i) to change permissions and ownership.
@@ -131,7 +131,7 @@ cmod -R 0755 /path/to/moodle/moodledata # Adjust permissions according to your s
 Make sure the permissions used above are coherent to what's in the `config.php` file:
 
 ```php
-$CFG->directorypermissions = 0775;
+$CFG->directorypermissions = 0755;
 ```
 
 > Permission are usually 0750, 0755 or 0775, it depends on the server (0777 might be unsafe).
@@ -334,9 +334,13 @@ Don't forget to save and **Test outgoing mail configuration**.
 
 Setting up the cron is **ESSENTIAL** and it should run **every minute**.
 
+Make sure the cron in run (owned) by the **web server user** (apache, www-data), It should be the same that owns the **moodledata** folder.
+
 ```sh
-# Open the cron file and update the file
+# Open the cron file and update the file. By default the owner of the crontab will be the current user
 $ crontab -e
+# If the current user is not the webserver user (i.e. with apache user)
+$ crontab -u apache -e
 ```
 
 ```php
@@ -345,6 +349,9 @@ $ crontab -e
 # SHELL="/bin/bash"
 # >/dev/null prevents from receiving a mail every minute
 */1 * * * * /usr/bin/php /path/to/moodle/public/admin/cli/cron.php >/dev/null
+# Or:
+*/1 * * * * /usr/bin/php /path/to/moodle/public/admin/cli/cron.php >/dev/null 2>&1
+# @>&1 with send errors (STDERR outputs) to /dev>null (black hole) instead of the logs
 ```
 
 To find the path and version of php:
