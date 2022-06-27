@@ -40,7 +40,14 @@ It is also possible to delete directly the content of some folders in the moodle
 
 # Logs
 
-Logs are currently never deleted. If the database has grown excessively, it's maybe time to shrink the log.
+To check the logs and search for errors, go to `Administration > Reports > Logs`. 
 
-https://www.elearningworld.org/excessive-moodle-lms-logs-part-1/
+![logs_search](.img/maintenance/logs_search.jpg)
 
+**<u>Settings</u>**:
+
+Logs are currently saved during 180 days.
+
+This can be adjusted at `Administration > Plugins > Logging > Standard Log`.
+
+If the database has grown excessively, it's maybe time to shrink the log as explained here: https://www.elearningworld.org/excessive-moodle-lms-logs-part-1/
