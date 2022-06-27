@@ -2,6 +2,14 @@
 
 [TOC]
 
+# Checking for new versions
+
+New versions of Moodle and of the plugins will be released from time to time.
+
+►See [install_git.md](manuals/install_git.md) document to upgrade Moodle.
+
+*Paragraph to complete.*
+
 # Maintenance mode
 
 Maintenance mode is for preventing any users other than administrators from using the site while maintenance is taking place, though *it's not designed to prevent user access during version upgrades*.
