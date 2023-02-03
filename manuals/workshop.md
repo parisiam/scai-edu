@@ -26,7 +26,7 @@ gantt
   todayMarker off
   We are here : milestone, crit, after a1, 0d
   section Workshop 1
-	  Submission : done, a1, 3w
+    Submission: done, a1, 2022-01-01, 3w
   	Assessment (active) : active, crit, a2, after a1, 2w
 	  Grading :a3, after a2, 1w
   	Closed :after a3, 5w
