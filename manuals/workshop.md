@@ -21,22 +21,22 @@ Voilà un schéma de déroulement lorsqu'il y a plusieurs workshop en cours.
 gantt
   title Sequence of workshop stages
   %% this is a comment
-  dateFormat  D
+  dateFormat D
   axisFormat %d/%m
   todayMarker off
-  We are here : milestone, crit, after a1, 0d
+  We are here: milestone, crit, after a1, 0d
   section Workshop 1
     Submission: done, a1, 2022-01-01, 3w
-  	Assessment (active) : active, crit, a2, after a1, 2w
-	  Grading :a3, after a2, 1w
-  	Closed :after a3, 5w
+    Assessment (active): crit, a2, after a1, 2w
+    Grading: a3, after a2, 1w
+    Closed: after a3, 5w
   section Workshop 2
-	  Submission (active) :active, crit, b1, after a1, 4w
-  	Assessment :b2, after b1, 2w
-	  Grading :b3, after b2, 1w
-  	Closed :after b3, 1w
+    Submission (active): crit, b1, after a1, 4w
+    Assessment: b2, after b1, 2w
+    Grading: b3, after b2, 1w
+    Closed: after b3, 1w
   section Workshop 3
-	  Submission:c1, after b1, 4w
+    Submission:c1, after b1, 4w
 
 ```
 
