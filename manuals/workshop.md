@@ -34,7 +34,7 @@ gantt
     	Grading :after b2, 1d
 
 ```
-Dans cet exemple. les phases actives (avec du rouge) sont celles dans lesquelles on se trouve : 
+Pour l'exemple, plaçons-nous à un moment où les phases actives sont celles indiquées en rouge : 
 
 - **Workshop 1** : on est en phase d'évaluation (assessment)
 - **Workshop 2** : on est en phase de dépôt de l'essai (submission)
