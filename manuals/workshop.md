@@ -4,11 +4,11 @@
 
 # Les contraintes
 
-Cette activité est très intéressante car elle permet l'interaction entre les apprenants (peer assessement) et demande un effort de réflexion intéressant. Mais elle n'a pas été conçue pour l'usage que souhaite en faire SCAI qui consiste à ouvrir le site à des individus séparés qui vont se présenter de façon aléatoire sur le site pendant toute la durée de vie de la plateforme. Il va donc falloir s'adapter au fonctionnement du workshop.
+Cette activité est très intéressante car elle combine interaction entre les apprenants (peer assessement) et effort de réflexion. Mais elle n'a pas été conçue pour l'usage que souhaite en faire SCAI qui consiste à ouvrir le site à des individus séparés qui vont se présenter de façon aléatoire sur le site pendant toute la durée de vie de la plateforme. Il va donc falloir s'adapter au fonctionnement du workshop.
 
 Le workshop est consitué de **5 phases successives** : **Setup, Submission, Assessment, Grading, Closed**. C'est une activité qui possède de nombreuses contraintes :
 
-- Elle nécessite un **groupe d'apprenants** constitué d'au moins 2 personnes.
+- Elle nécessite un **groupe d'apprenants** constitué d'au moins <u>2 personnes</u>.
 - Elle doit être **limitée dans le temps**.
 - Les apprenants ne peuvent déposer leur essai que dans la phase **Submission**. 
 - Les notes ne sont délivrées aux apprenants que lorsque le workshop est en phase **Closed**.
@@ -37,7 +37,7 @@ gantt
 Dans cet exemple. les phases actives (avec du rouge) sont celles dans lesquelles on se trouve : 
 
 - **Workshop 1** : on est en phase d'évaluation (assessment)
-- **Workshop 2** : on est en phase de dépôt de l'essai ()
+- **Workshop 2** : on est en phase de dépôt de l'essai (submission)
 
 # Règle de fonctionnement
 
@@ -106,7 +106,7 @@ Le badge est maintenant créé et actif comme on peut le voir dans la liste des 
 
 ## On attend que le workshop 1 soit clôturé
 
-Ne PAS modifier le certificat maintenant. On attends. Des jours et des jours... ☕️ ⏰ Et voilà le workshop 1 est maintenant terminé !
+Ne PAS modifier le certificat maintenant. On attend. On attend patiemment... ☕️ ⏰ Et voilà le workshop 1 est maintenant terminé !
 
 ## On modifie le certificat
 
