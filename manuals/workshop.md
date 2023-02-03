@@ -42,9 +42,9 @@ gantt
 
 Pour l'exemple, plaçons-nous à un moment où les phases actives sont celles indiquées en rouge : 
 
-- **Workshop 1** : on termine juste la phase de dépôt de l'essai (submission) et on commence la phase d'évaluation (assessment)
-- **Workshop 2** : on démarre la phase de dépôt de l'essai (submission)
-- **Workshop 3** : n'a pas encore commencé
+- **Workshop 1** : on termine juste la phase de dépôt de l'essai (submission) et on commence la phase d'évaluation (assessment);
+- **Workshop 2** : on démarre la phase de dépôt de l'essai (submission);
+- **Workshop 3** : on n'a pas encore commencé.
 
 # Règle de fonctionnement
 
