@@ -42,6 +42,7 @@ Pour l'exemple, plaçons-nous à un moment où les phases actives sont celles in
 
 - **Workshop 1** : on est en phase d'évaluation (assessment)
 - **Workshop 2** : on est en phase de dépôt de l'essai (submission)
+- **Workshop 3** : n'a pas encore commencé
 
 # Règle de fonctionnement
 
