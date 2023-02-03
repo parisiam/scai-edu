@@ -19,20 +19,24 @@ Voilà un schéma de déroulement lorsqu'il y a plusieurs workshop en cours.
 
 ```mermaid
 gantt
-    title Sequencing of workshops phases
+    title Sequence of workshop stages
     %% this is a comment
     dateFormat  D
     axisFormat %d/%m
-	todayMarker off
+   	todayMarker off
+    We are here : milestone, crit, after a1, 18d    
 	section Workshop 1
-	    Submission :a1, after a0, 3d
-    	Assessment (active) :active, crit, a2, after a1, 2d
-    	Grading :after a2, 1d
-    section Workshop 2
-	    Submission (active) :crit, b1, after a1, 4d
-    	Assessment :b2, after b1, 2d
-    	Grading :after b2, 1d
-
+	    Submission : done, a1, after a0, 3w
+    	Assessment (active) :active, crit, a2, after a1, 2w
+    	Grading :a3, after a2, 1w
+    	Closed :after a3, 5w
+  section Workshop 2
+    Submission (active) :active, crit, b1, after a1, 4w
+    Assessment :b2, after b1, 2w
+    Grading :b3, after b2, 1w
+    Closed :after b3, 1w
+  section Workshop 3
+    Submission:c1, after b1, 4w
 ```
 Pour l'exemple, plaçons-nous à un moment où les phases actives sont celles indiquées en rouge : 
 
