@@ -45,9 +45,9 @@ Malheureusement Moodle ne propose pas cette fonctionnalité en standard, ni sous
 
 # Ordre des cours dans la liste des cours
 
-On ne peut complètement contrôler l'ordre dans lequel apparaissent les cours sur la page d'accueil (je suis aller regarder dans le code) :
+On ne peut pas complètement contrôler l'ordre dans lequel apparaissent les cours sur la page d'accueil (je suis aller regarder dans le code) :
 
-- On ne contrôle l'ordre des cours que partiellement et **uniquement à** **l'intérieur** **d'une catégorie**.
+- On ne contrôle l'ordre des cours que partiellement et **uniquement à l'intérieur d'une catégorie**.
 
 - Mais on peut contrôler l'ordre d'apparitions des catégories.
 
